@@ -7,7 +7,7 @@
 *ATM UYGULAMASI
  */
 
-let bakiye=prompt("Lütfen bakiyenizi giriniz:");
+let bakiye=Number(prompt("Lütfen bakiyenizi giriniz:"));
 let satir ="\r\n";
 let metin ="ATM'ye Hoşgeldiniz!. "+satir
 +"Bakiye Görüntülemek için 1"+satir
@@ -22,13 +22,18 @@ switch(girdi){
         alert("Toplam bakiyeniz :"+bakiye);
         break;
     case "2":
-        let eksi = prompt("Kaç tel çekmek istiyorsunuz?");
-        bakiye -=eksi;
-        alert(eksi+" TL para çekme işlemi gerçekleşti."+satir
-            +"Kalan bakiye : "+bakiye
-        );
+        let eksi = Number(prompt("Kaç tel çekmek istiyorsunuz?"));
+        if(eksi>bakiye){
+            alert(eksi+" tl çekeceğiniz tutar "+bakiye+"'nizden fazladır.!!!");
+        }else{
+            bakiye -=eksi;
+            alert(eksi+" TL para çekme işlemi gerçekleşti."+satir
+                +"Kalan bakiye : "+bakiye
+            );
+        }
+      
     case "3":
-        let arti = propmt("Kaç tl yatırmak istiyorsunuz?");
+        let arti = Number(propmt("Kaç tl yatırmak istiyorsunuz?"));
         bakiye+=arti;
         alert("Yatırılan Para: "+arti+satir
             +"Toplam Bakiye : "+bakiye
@@ -41,5 +46,8 @@ switch(girdi){
         else if(sonuc =="hayir"){
             "f'e basınız.";
         }
+        break;
+    default:
+        alert("1 ile 4 arasında rakam giriniz!!");
         break;
 }
